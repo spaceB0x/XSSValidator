@@ -13,7 +13,28 @@ POST request to:
 * `/validate` endpoint simply returns json object of `true` or `false`. Depending if it is valid
 * `/sanitize` endpoint returns the supplied string if valid. Else returns the HTML entity encoded string. 
 
+
+###/validate
 Request json payload example:
 ```json
-{ "val":"<script>alert('badsauce')</script>}
+{ "value":"<script>alert('badsauce')</script>" }
 ```
+
+Return json payload example (for above request):
+```json
+{"value":false}
+```
+
+
+
+###/sanitize
+Request json payload example:
+```json
+{ "value":"<script>alert('badsauce')</script>" }
+```
+
+Return json payload example (for above request):
+```json
+{"value":"&lt;script&gt;alert('badsauce')&lt;/script&gt;"}
+```
+
